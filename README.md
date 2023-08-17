@@ -1,6 +1,6 @@
 # rdf-formatter
 
-A CLI for converting between RDF formats. RDF Formatter uses the parsers and serializers available in [@rdfjs-elements/formats-pretty](https://www.npmjs.com/package/@rdfjs-elements/formats-pretty) to make a unix command-line friendly CLI application. See [Usage](#usage) below for supported RDF formats.
+A CLI for converting between RDF formats. RDF Formatter uses the parsers and serializers available in [@rdfjs-elements/formats-pretty](https://www.npmjs.com/package/@rdfjs-elements/formats-pretty) and [@rdfjs/formats-common](https://www.npmjs.com/package/@rdfjs/formats-common) to make a unix command-line friendly CLI application. See [Usage](#usage) below for supported RDF formats.
 
 [![npm version](https://badge.fury.io/js/rdf-formatter.svg)](https://badge.fury.io/js/rdf-formatter) ![npm](https://img.shields.io/npm/l/rdf-formatter)
 
@@ -24,6 +24,7 @@ Extension       Mimetype
 .nt             application/n-triples
 .nq             application/n-quads
 .n3             text/n3
+.owl            application/rdf+xml
 .rdf            application/rdf+xml
 .xml            application/rdf+xml
 .trig           application/trig
@@ -38,6 +39,7 @@ Options:
   -i, --input-type <inputFormat>    Input RDF format mimetype, will guess from file extension otherwise.
   -o, --output-type <outputFormat>  Output RDF format mimetype, will guess from file extension otherwise.
   --prefixes <prefixFile>           JSON file with prefixes to use in formatting
-  -p, --prefix [prefix...]          Add an individual prefix using format: prefixname==http://ex.com/
+  --ns [prefix...]                  Add an individual namespace prefix using format: prefixname=http://ex.com/
+  --pretty                          Use pretty print formatting
   -h, --help                        display help for command
 ```

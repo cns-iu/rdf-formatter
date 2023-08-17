@@ -1,8 +1,13 @@
 {
   "name": "rdf-formatter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A CLI for converting between RDF formats",
-  "keywords": [ "rdf", "rdfjs", "jsonld", "ttl" ],
+  "keywords": [
+    "rdf",
+    "rdfjs",
+    "jsonld",
+    "ttl"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/cns-iu/rdf-formatter#readme",
   "bugs": "https://github.com/cns-iu/rdf-formatter/issues",
@@ -22,6 +27,7 @@
   },
   "dependencies": {
     "@rdfjs-elements/formats-pretty": "^0.6.3",
+    "@rdfjs/formats-common": "^3.1.0",
     "commander": "^11.0.0"
   }
 }

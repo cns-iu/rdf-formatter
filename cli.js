@@ -50,8 +50,9 @@ program
   .option('-i, --input-type <inputFormat>', 'Input RDF format mimetype, will guess from file extension otherwise.')
   .option('-o, --output-type <outputFormat>', 'Output RDF format mimetype, will guess from file extension otherwise.')
   .option('--prefixes <prefixFile>', 'JSON file with prefixes to use in formatting')
-  .option('-p, --prefix [prefix...]', 'Add an individual prefix using format: prefixname==http://ex.com/')
-  .action((inputFile, outputFile, { inputType, outputType, prefixes, prefix }) => {
+  .option('--ns [prefix...]', 'Add an individual namespace prefix using format: prefixname=http://ex.com/')
+  .option('--pretty', 'Use pretty print formatting')
+  .action((inputFile, outputFile, { inputType, outputType, prefixes, ns, pretty }) => {
     // Normalize input and output mimetypes
     inputType = normalizeMimeType(inputFile, inputType);
     outputType = normalizeMimeType(outputFile, outputType);
@@ -62,17 +63,20 @@ program
     } else {
       prefixes = {};
     }
-    if (prefix?.length > 0) {
-      for (const prefixString of prefix) {
-        const prefixAndString = prefixString.split('==');
-        if (prefixAndString.length === 2) {
-          prefixes[prefixAndString[0]] = prefixAndString[1];
+    if (ns?.length > 0) {
+      for (const prefixString of ns) {
+        const prefixAndString = prefixString.split('=');
+        if (prefixAndString.length > 2) {
+          prefixes[prefixAndString[0]] = prefixAndString.slice(1).join('=');
         }
       }
     }
 
+    // Determine whether to pretty print
+    const prettyPrint = pretty === true;
+
     // Convert!
-    rdfFormatter(inputFile, inputType, outputFile, outputType, prefixes);
+    rdfFormatter(inputFile, inputType, outputFile, outputType, prefixes, prettyPrint);
   });
 
 program.parse(process.argv);

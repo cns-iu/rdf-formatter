@@ -1,4 +1,6 @@
-import formats from '@rdfjs-elements/formats-pretty';
+import * as pretty from '@rdfjs-elements/formats-pretty';
+import * as plain from '@rdfjs/formats-common';
+
 import { createReadStream, createWriteStream } from 'fs';
 
 /**
@@ -12,6 +14,7 @@ export const EXTENSION_MAPPING = {
   nt: 'application/n-triples',
   nq: 'application/n-quads',
   n3: 'text/n3',
+  owl: 'application/rdf+xml',
   rdf: 'application/rdf+xml',
   xml: 'application/rdf+xml',
   trig: 'application/trig',
@@ -56,8 +59,12 @@ export async function rdfGuessAndFormat(inputFile, outputFile, prefixes = {}) {
  * @param {string} outputFile the output file to create, '-' writes to stdout
  * @param {string} outputFormat the mimetype of the output file
  * @param {object} prefixes an optional dictionary of prefixes to use when creating the output
+ * @param {boolean} [prettyPrint=true] pretty print the output, defaults to true
  */
-export async function rdfFormatter(inputFile, inputFormat, outputFile, outputFormat, prefixes = {}) {
+export async function rdfFormatter(inputFile, inputFormat, outputFile, outputFormat, prefixes = {}, prettyPrint = true) {
+  // Choose the right formatter
+  const formats = prettyPrint ? pretty.default : plain;
+
   // Create read and write streams from given files
   const readStream = inputFile === '-' ? process.stdin : createReadStream(inputFile);
   const writeStream = outputFile === '-' ? process.stdout : createWriteStream(outputFile);
