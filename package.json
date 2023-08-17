@@ -8,7 +8,7 @@
   "bugs": "https://github.com/cns-iu/rdf-formatter/issues",
   "repository": "github:cns-iu/rdf-formatter",
   "bin": {
-    "rdf-format": "./cli.js"
+    "rdf-formatter": "./cli.js"
   },
   "main": "converter.js",
   "type": "module",
