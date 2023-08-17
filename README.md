@@ -2,7 +2,7 @@
 
 A CLI for converting between RDF formats. RDF Formatter uses the parsers and serializers available in [@rdfjs-elements/formats-pretty](https://www.npmjs.com/package/@rdfjs-elements/formats-pretty) to make a unix command-line friendly CLI application. See [Usage](#usage) below for supported RDF formats.
 
-![npm](https://img.shields.io/npm/l/rdf-formatter)
+[![npm version](https://badge.fury.io/js/rdf-formatter.svg)](https://badge.fury.io/js/rdf-formatter) ![npm](https://img.shields.io/npm/l/rdf-formatter)
 
 ## Installation
 
