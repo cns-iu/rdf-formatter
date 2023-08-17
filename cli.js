@@ -62,10 +62,12 @@ program
     } else {
       prefixes = {};
     }
-    for (const prefixString of prefix) {
-      const prefixAndString = prefixString.split('==');
-      if (prefixAndString.length === 2) {
-        prefixes[prefixAndString[0]] = prefixAndString[1];
+    if (prefix?.length > 0) {
+      for (const prefixString of prefix) {
+        const prefixAndString = prefixString.split('==');
+        if (prefixAndString.length === 2) {
+          prefixes[prefixAndString[0]] = prefixAndString[1];
+        }
       }
     }
 
