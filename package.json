@@ -1,6 +1,6 @@
 {
   "name": "rdf-formatter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI for converting between RDF formats",
   "keywords": [ "rdf", "rdfjs", "jsonld", "ttl" ],
   "license": "MIT",
