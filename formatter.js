@@ -2,6 +2,7 @@ import * as pretty from '@rdfjs-elements/formats-pretty';
 import * as plain from '@rdfjs/formats-common';
 
 import { createReadStream, createWriteStream } from 'fs';
+import { RdfaParser } from 'rdfa-streaming-parser';
 
 /**
  * A map of all supported extensions and their mapping to 
@@ -20,6 +21,8 @@ export const EXTENSION_MAPPING = {
   trig: 'application/trig',
   turtle: 'text/turtle',
   ttl: 'text/turtle',
+  html: 'text/html',
+  htm: 'text/html'
 };
 
 /**
@@ -64,6 +67,10 @@ export async function rdfGuessAndFormat(inputFile, outputFile, prefixes = {}) {
 export async function rdfFormatter(inputFile, inputFormat, outputFile, outputFormat, prefixes = {}, prettyPrint = true) {
   // Choose the right formatter
   const formats = prettyPrint ? pretty.default : plain;
+
+  if (inputFormat === 'text/html') {
+    formats.parsers.set('text/html', new RdfaParser({ baseIRI: 'http://example.com', contentType: 'text/html' }));
+  }
 
   // Create read and write streams from given files
   const readStream = inputFile === '-' ? process.stdin : createReadStream(inputFile);
