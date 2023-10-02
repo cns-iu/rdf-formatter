@@ -25,6 +25,11 @@ export const EXTENSION_MAPPING = {
   htm: 'text/html'
 };
 
+
+// Add RDFa parsers
+plain.parsers.set('text/html', new RdfaParser({ baseIRI: 'http://example.com', contentType: 'text/html' }));
+pretty.default.parsers.set('text/html', new RdfaParser({ baseIRI: 'http://example.com', contentType: 'text/html' }));
+
 /**
  * A set of all supported mimetypes
  */
@@ -68,8 +73,9 @@ export async function rdfFormatter(inputFile, inputFormat, outputFile, outputFor
   // Choose the right formatter
   const formats = prettyPrint ? pretty.default : plain;
 
-  if (inputFormat === 'text/html') {
-    formats.parsers.set('text/html', new RdfaParser({ baseIRI: 'http://example.com', contentType: 'text/html' }));
+  if (outputFormat === 'text/html') {
+    console.error('text/html (RDFa) is not supported as an output format at this time.');
+    process.exit(-1);
   }
 
   // Create read and write streams from given files

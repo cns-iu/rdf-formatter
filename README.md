@@ -1,6 +1,6 @@
 # rdf-formatter
 
-A CLI for converting between RDF formats. RDF Formatter uses the parsers and serializers available in [@rdfjs-elements/formats-pretty](https://www.npmjs.com/package/@rdfjs-elements/formats-pretty) and [@rdfjs/formats-common](https://www.npmjs.com/package/@rdfjs/formats-common) to make a unix command-line friendly CLI application. See [Usage](#usage) below for supported RDF formats.
+A CLI for converting between RDF formats. RDF Formatter uses the parsers and serializers available in [@rdfjs-elements/formats-pretty](https://www.npmjs.com/package/@rdfjs-elements/formats-pretty), [@rdfjs/formats-common](https://www.npmjs.com/package/@rdfjs/formats-common), and [rdfa-streaming-parser](https://www.npmjs.com/package/rdfa-streaming-parser) to make a unix command-line friendly CLI application. See [Usage](#usage) below for supported RDF formats.
 
 [![npm version](https://badge.fury.io/js/rdf-formatter.svg)](https://badge.fury.io/js/rdf-formatter) ![npm](https://img.shields.io/npm/l/rdf-formatter)
 
@@ -30,6 +30,8 @@ Extension       Mimetype
 .trig           application/trig
 .turtle         text/turtle
 .ttl            text/turtle
+.html           text/html (RDFa - only as an input format)
+.htm            text/html (RDFa - only as an input format)
 
 Arguments:
   inputFile                         The input file in an RDF format, use - for stdin

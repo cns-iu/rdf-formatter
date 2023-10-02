@@ -1,12 +1,13 @@
 {
   "name": "rdf-formatter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A CLI for converting between RDF formats",
   "keywords": [
     "rdf",
     "rdfjs",
     "jsonld",
-    "ttl"
+    "ttl",
+    "rdfa"
   ],
   "license": "MIT",
   "homepage": "https://github.com/cns-iu/rdf-formatter#readme",
